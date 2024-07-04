@@ -172,31 +172,25 @@ const Card = (props: Props) => {
         class={`d-flex flex-row justify-content-between align-items-baseline text-muted mt-auto pt-1 ${styles.additionalInfo}`}
       >
         <div class="d-flex flex-row align-items-center text-nowrap">
-          <Switch>
-            <Match when={!isUndefined(stars())}>
-              <div class="d-flex flex-row align-items-baseline">
-                <small class="me-1 text-black-50">GitHub stars:</small>
-                <div class="fw-semibold">{stars ? prettifyNumber(stars()!, 1) : '-'}</div>
-              </div>
-            </Match>
-            <Match
-              when={
-                isUndefined(props.item.maturity) &&
-                !isUndefined(props.item.crunchbase_data) &&
-                !isUndefined(props.item.crunchbase_data.funding) &&
-                props.item.crunchbase_data.funding > 0
-              }
-            >
+          <Show
+            when={
+              isUndefined(props.item.maturity) &&
+              !isUndefined(props.item.crunchbase_data) &&
+              !isUndefined(props.item.crunchbase_data.funding) &&
+              props.item.crunchbase_data.funding > 0
+            }
+          >
+            <div class="p-1 d-flex flex-row align-items-baseline">
               <small class="me-1 text-black-50">Funding:</small>
               <div class="fw-semibold">{prettifyNumber(props.item.crunchbase_data!.funding!)}</div>
-            </Match>
-            <Match when={!isUndefined(stars())}>
-              <div class="p-1 d-flex flex-row align-items-baseline">
-                <small class="me-1 text-black-50">GitHub stars:</small>
-                <div class="fw-semibold">{stars ? prettifyNumber(stars()!, 1) : '-'}</div>
-              </div>
-            </Match>
-          </Switch>
+            </div>
+          </Show>
+          <Show when={!isUndefined(stars())}>
+            <div class="d-flex flex-row align-items-baseline">
+              <small class="me-1 text-black-50">GitHub stars:</small>
+              <div class="fw-semibold">{stars ? prettifyNumber(stars()!, 1) : '-'}</div>
+            </div>
+          </Show>
           <Show when={!isUndefined(numCitations())}>
             <div class="p-1 d-flex flex-row align-items-baseline">
               <small class="me-1 text-black-50">Citations:</small>
