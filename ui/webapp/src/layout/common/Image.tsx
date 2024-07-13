@@ -39,6 +39,7 @@ const Image = (props: Props) => {
           loading={!isUndefined(props.enableLazyLoad) && props.enableLazyLoad ? 'lazy' : undefined}
           width={props.width || 'auto'}
           height={props.height || 'auto'}
+          itemprop="image"
         />
       )}
     </Show>

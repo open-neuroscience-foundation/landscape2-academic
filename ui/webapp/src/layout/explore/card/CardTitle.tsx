@@ -29,7 +29,7 @@ const CardTitle = (props: Props) => {
   });
 
   return (
-    <div ref={setRef} class={`fw-semibold text-truncate pb-1 ${styles.title}`} style={{ 'font-size': fontSize() }}>
+    <div ref={setRef} class={`fw-semibold text-truncate pb-1 ${styles.title}`} style={{ 'font-size': fontSize() }} itemprop="name">
       {props.title}
     </div>
   );

@@ -69,7 +69,7 @@ const Card = (props: Props) => {
           />
         </div>
 
-        <div class={`p-3 ms-2 ${styles.itemInfo}`}>
+        <div class={`p-3 ms-2 ${styles.itemInfo}`} itemtype="https://schema.org/Organization" itemscope>
           <CardTitle title={props.item.name} isVisible={props.isVisible} />
 
           <Show when={!isUndefined(props.item!.locations) && props.item!.locations!.length > 0}>
