@@ -158,8 +158,12 @@ pub(crate) struct Location {
 pub(crate) struct Academic {
     pub name: String,
     pub profile_url: String,
-    pub hindex: i32,
-    pub citations: i32,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub hindex: Option<i32>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub citations: Option<i32>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub i10index: Option<i32>,

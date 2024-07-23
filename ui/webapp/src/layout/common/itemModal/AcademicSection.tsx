@@ -26,8 +26,8 @@ const AcademicSection = (props: Props) => {
         </div>
 
         <div class="row g-4 my-0 mb-2">
-          <Box value={prettifyNumber(primary()!.citations, 1)} legend="Citations" />
-          <Box value={prettifyNumber(primary()!.hindex, 1)} legend="h-index" />
+          <Box value={!isUndefined(primary()!.citations) ? prettifyNumber(primary()!.citations!, 1) : "-"} legend="Citations" />
+          <Box value={!isUndefined(primary()!.hindex) ? prettifyNumber(primary()!.hindex!, 1) : "-"} legend="h-index" />
           <Box value={!isUndefined(primary()!.i10index) ? prettifyNumber(primary()!.i10index!, 1) : "-"} legend="i10-index" />
         </div>
 
@@ -64,8 +64,8 @@ const AcademicSection = (props: Props) => {
                             {q.name}
                           </ExternalLink>
                         </td>
-                        <td class="px-3 text-center text-nowrap">{prettifyNumber(q.citations, 1)}</td>
-                        <td class="px-3 text-center text-nowrap">{prettifyNumber(q.hindex, 1)}</td>
+                        <td class="px-3 text-center text-nowrap">{!isUndefined(q.citations) ? prettifyNumber(q.citations!, 1) : "-"}</td>
+                        <td class="px-3 text-center text-nowrap">{!isUndefined(q.hindex) ? prettifyNumber(q.hindex!, 1) : "-"}</td>
                         <td class="px-3 text-center text-nowrap">{!isUndefined(q.i10index) ? prettifyNumber(q.i10index!, 1) : "-"}</td>
                       </tr>
                     );
